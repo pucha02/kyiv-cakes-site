@@ -1,7 +1,7 @@
 export const ProductCost = ({cost}) => {
     return (
         <div>
-            {cost}
+            {cost}$
         </div>
     )
 }

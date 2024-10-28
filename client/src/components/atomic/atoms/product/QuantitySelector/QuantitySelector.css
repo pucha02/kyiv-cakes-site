@@ -1,0 +1,23 @@
+.count-product{
+    position: absolute;
+    left: 45px;
+    font-size: 20px;
+    border: none;
+    width: 150px;
+    text-align: center;
+    outline: none;
+}
+
+.plus{
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.minus{
+    position: absolute;
+    left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}

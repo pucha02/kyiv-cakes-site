@@ -1,7 +1,9 @@
+import './ProductButton.css'
+
 export const ProductButton = ({method}) => {
     return (
-        <div>
-           <button onClick={method}>Додати у кошик</button>
+        <div className="product-button">
+           <div onClick={method}>Додати у кошик</div>
         </div>
     )
 }

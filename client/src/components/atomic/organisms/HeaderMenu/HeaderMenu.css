@@ -1,0 +1,17 @@
+.category-list {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.category-list-el {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+.category-list-el:hover{
+    border-bottom: 2px solid black;
+}
