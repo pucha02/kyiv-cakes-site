@@ -1,0 +1,124 @@
+{
+  "product-list": [
+    {
+      "name": "Тарт Малина",
+      "price": 150,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Торты"
+    },
+    {
+      "name": "Торт Шоколадный",
+      "price": 200,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Торты"
+    },
+    {
+      "name": "Чизкейк Классический",
+      "price": 180,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Чизкейки"
+    },
+    {
+      "name": "Торт Фрукты",
+      "price": 220,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Торты"
+    },
+    {
+      "name": "Эклер Классический",
+      "price": 100,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Десерты"
+    },
+    {
+      "name": "Торт Медовик",
+      "price": 170,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Торты"
+    },
+    {
+      "name": "Капкейки Ванильные",
+      "price": 120,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Капкейки"
+    },
+    {
+      "name": "Пирог Яблочный",
+      "price": 140,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Пироги"
+    },
+    {
+      "name": "Торт Тирамису",
+      "price": 230,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Торты"
+    },
+    {
+      "name": "Кекс Шоколадный",
+      "price": 110,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Кексы"
+    },
+    {
+      "name": "Торт Черепаха",
+      "price": 260,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Торты"
+    },
+    {
+      "name": "Морозное Мороженое",
+      "price": 90,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Мороженое"
+    },
+    {
+      "name": "Пирожное Наполеон",
+      "price": 130,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Пирожные"
+    },
+    {
+      "name": "Торт Клубника",
+      "price": 240,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Торты"
+    },
+    {
+      "name": "Брауни Классический",
+      "price": 160,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Десерты"
+    },
+    {
+      "name": "Пирог Творожный",
+      "price": 150,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Пироги"
+    },
+    {
+      "name": "Кексы Ягодные",
+      "price": 125,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Кексы"
+    },
+    {
+      "name": "Торт Апельсиновый",
+      "price": 200,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Торты"
+    },
+    {
+      "name": "Пирожное Шоколадное",
+      "price": 140,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Пирожные"
+    },
+    {
+      "name": "Торт Сливочный",
+      "price": 210,
+      "image": "../../../../resources/productImage/tart.webp",
+      "category": "Торты"
+    }
+  ]
+}
