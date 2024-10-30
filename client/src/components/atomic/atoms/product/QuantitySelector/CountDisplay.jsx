@@ -1,15 +1,18 @@
 export const CountDisplay = ({ count, setCount }) => {
+  const handleBlur = () => {
+    if (!count || count <= 0) {
+      setCount("1"); // Устанавливаем "1", если поле пустое
+    }
+  };
   return (
     <input
       className='count-product'
       type="text"
-      value={count}
+      value={count || 0}
       onChange={(e) => {
-        const value = parseInt(e.target.value, 10); // Преобразуем в число
-        if (!isNaN(value) && value >= 0) { // Проверяем, что значение — число и не отрицательное
-          setCount(value);
-        }
+        setCount(parseInt(e.target.value));
       }}
+      onBlur={handleBlur}
     />
   );
 };

@@ -1,9 +1,15 @@
-.product-quantity-selector{
+.product-quantity-selector-container{
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
     padding: 8px;
     margin-top: 15px;
-    position: relative;
     height: 22px;
+}
+
+.product-quantity-selector-elements{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
 }

@@ -1,9 +1,9 @@
 import './ProductImage.css'
 
-export const ProductImage = ({src, alt}) => {
+export const ProductImage = ({src, alt, onClick}) => {
     return (
-        <div >
-            <img className="product-image" src={src} alt={alt} />
+        <div style={{cursor:"pointer"}}>
+            <img onClick={onClick} className="product-image" src={src} alt={alt} />
         </div>
     )
 }

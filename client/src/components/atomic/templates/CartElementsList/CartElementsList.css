@@ -1,0 +1,5 @@
+.product-list-cart {
+    padding: 0;
+    height: 450px;
+    overflow-y: auto;
+}

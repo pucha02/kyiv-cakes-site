@@ -1,0 +1,8 @@
+.order-block{
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-block-form{
+    width: 60%;
+}

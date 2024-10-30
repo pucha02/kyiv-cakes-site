@@ -1,6 +1,6 @@
 export const CartCount = ({count}) => {
     return (
-        <div>
+        <div className="cart-el-count">
             {count}
         </div>
     )

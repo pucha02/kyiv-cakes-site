@@ -4,10 +4,27 @@
     justify-content: flex-start;
     gap: 20px;
     padding: 0;
+    overflow-y: auto;
 }
 
 
-.product-element{
+.product-element {
     width: 23%;
     list-style-type: none;
+}
+
+/* ProductModal.css */
+
+  
+
+@media (max-width: 700px) {
+    .product-list {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .product-element {
+        width: 100%;
+    }
 }

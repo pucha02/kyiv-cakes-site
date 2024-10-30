@@ -1,18 +1,42 @@
 import { MenuButton } from "../../atoms/header/MenuButton/MenuButton";
-import { useMemo } from "react";
-import './HeaderMenu.css'
+import { useMemo, useState } from "react";
+import './HeaderMenu.css';
 
 export const HeaderMenu = () => {
-    const categories = ["Торты", "Десерты", "Чизкейки"];
+    const [isOpen, setIsOpen] = useState(false);
+
+    const categories = [
+        "Порційні десерти",
+        "Твої Веган Десерти",
+        "Твої Кекси",
+        "Твої сиропи",
+        "Твої Тортики",
+        "Кіш лорен"
+    ];
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+        console.log(isOpen)
+    };
 
     const renderCategory = (data) => {
-        return Object.values(data).map((category, idx) => (
-            <div className="category-list-el" key={idx} >
-                <MenuButton title={category} src={`#${category}`} />
+        return data.map((category, idx) => (
+            <div className="category-list-el" key={idx}>
+                <MenuButton title={category} src={`#${category}`} onClick={toggleMenu}/>
             </div>
         ));
     };
-    const elements = useMemo(() => renderCategory(categories), []);
 
-    return <div className="category-list">{elements}</div>;
-}
+    const elements = useMemo(() => renderCategory(categories), [categories]);
+
+    return (
+        <div className="header-menu">
+            <div className="burger-icon" onClick={toggleMenu}>
+                ☰
+            </div>
+            <div className={`category-list ${isOpen ? 'open' : ''}`}>
+                {elements}
+            </div>
+        </div>
+    );
+};

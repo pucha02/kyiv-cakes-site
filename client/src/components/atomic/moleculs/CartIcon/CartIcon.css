@@ -1,0 +1,5 @@
+.cart-icon-block{
+    display: flex;
+    position: relative;
+    cursor: pointer;
+}

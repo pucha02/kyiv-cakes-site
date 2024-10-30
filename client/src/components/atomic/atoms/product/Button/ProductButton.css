@@ -6,4 +6,12 @@
     padding: 10px 15px 10px 15px;
     margin-top: 15px;
     cursor: pointer;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .product-button{
+        height: 42px;
+        font-size: 15px;
+    }
 }

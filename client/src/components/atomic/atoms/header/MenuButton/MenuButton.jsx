@@ -1,9 +1,9 @@
-import './MenuButton.css'
+import './MenuButton.css';
 
-export const MenuButton = ({ src, title }) => {
+export const MenuButton = ({ src, title, onClick }) => {
     return (
-        <div className="menu-button">
-            <div src={src}>{title}</div>
-        </div>
-    )
-}
+        <a onClick={onClick} href={src} className="menu-button">
+           {title}
+        </a>
+    );
+};
