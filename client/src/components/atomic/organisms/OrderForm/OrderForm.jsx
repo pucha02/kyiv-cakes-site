@@ -25,7 +25,7 @@ export const OrderForm = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5001/api/mongo-orders', {
+            const response = await fetch('http://13.60.53.226/api/mongo-orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
