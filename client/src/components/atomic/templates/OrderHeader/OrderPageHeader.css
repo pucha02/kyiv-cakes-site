@@ -1,0 +1,37 @@
+.order-header-block{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    background-color: white;
+    border-bottom: 1px solid;
+}
+.order-header, .order-header-block a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.order-header-name1{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.order-header-name2{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.order-header-logo{
+    text-decoration: none;
+    color: black;
+}
+
+.order-header-block .go{
+    color: black;
+}
+
+@media (max-width:768px) {
+    .order-header-block .go{
+        display: none;
+    }
+}

@@ -18,7 +18,7 @@ export const CartItem = ({ item, onItemRemove, updateTotal }) => {
 
     useEffect(() => {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
-
+        console.log(cart)
         const updatedCart = cart.map(cartItem => 
             cartItem.id === item.id ? { ...cartItem, quantity: count } : cartItem
         );
@@ -31,11 +31,11 @@ export const CartItem = ({ item, onItemRemove, updateTotal }) => {
     return (
         <div className="cart-item-block">
             <div className="cart-item-image">
-                <CartProductImage src={ProdImg} />
+                <CartProductImage src={item.image || item.src || ProdImg} />
             </div>
             <div className="cart-item-description">
                 <NameCartProducts name={item.name} />
-                <PriceCartProducts price={item.cost * count} />
+                <PriceCartProducts price={item.cost * count} className={'price-cart-product'} />
                 <RemoveCartElementButton onRemove={handleRemove} />
                 <ProductQuantitySelector count={count} setCount={setCount} updateTotal={updateTotal} />
             </div>

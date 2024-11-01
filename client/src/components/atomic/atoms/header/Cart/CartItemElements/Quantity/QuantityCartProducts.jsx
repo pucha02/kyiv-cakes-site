@@ -1,5 +1,5 @@
 export const QuantityCartProducts = ({ qty }) => {
     return (
-        <div>{qty}</div>
+        <div>К-сть: {qty}</div>
     )
 }

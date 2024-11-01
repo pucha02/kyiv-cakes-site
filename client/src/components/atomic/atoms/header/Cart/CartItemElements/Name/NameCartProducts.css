@@ -1,0 +1,7 @@
+.name-cart-products {
+    word-wrap: break-word; /* Переносит длинные слова на следующую строку */
+    white-space: normal; /* Позволяет тексту переноситься */
+    overflow-wrap: break-word; 
+    width: 80%;
+    font-size: 17px;
+}

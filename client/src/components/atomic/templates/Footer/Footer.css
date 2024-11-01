@@ -1,0 +1,13 @@
+.footer-block{
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    background-color: white;
+    border-bottom: 1px solid;
+}
+
+@media (max-width: 768px) {
+    .order-header.foot .order-header-name1, .order-header.foot .order-header-name2{
+        font-size: 10px;
+    }
+}

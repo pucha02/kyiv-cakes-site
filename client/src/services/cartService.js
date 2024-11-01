@@ -10,7 +10,7 @@ export const getCart = () => {
 export const addToCart = (product) => {
   const cart = getCart();
   const existingProductIndex = cart.findIndex((item) => item.id === product.id);
-
+  console.log(product)
   if (existingProductIndex !== -1) {
     cart[existingProductIndex].quantity += product.quantity || 1;
   } else {

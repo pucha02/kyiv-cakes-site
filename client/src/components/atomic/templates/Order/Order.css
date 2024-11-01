@@ -1,8 +1,50 @@
 .order-block{
     display: flex;
     justify-content: space-between;
+    margin: 33px 0 auto;
 }
 
 .order-block-form{
-    width: 60%;
+    order: 1;
+    width: 50%;
+}
+
+.order-block-data{
+    order: 2;
+    width: 40%;
+    position: sticky;
+    top: 0;
+    height: max-content;
+    background-color: #0000000F;
+    padding: 20px;
+}
+@media (max-width: 768px) {
+    .order-block{
+        display: flex; 
+        flex-direction: column;
+        margin: 0;
+        margin-bottom: 20px;
+       
+    }
+    .order-block-form{
+        order: 2;
+        width: 98%;
+        margin: 0 auto;
+        
+    }
+    form{
+        margin: 0 auto;
+    }
+    .order-block-data{
+        position: relative;
+        order: 1;
+        width: 100%;
+        margin-top: 20px;
+        padding: 0px;
+    }
+    .order-block-data h2{
+        padding: 10px;
+        font-size: 16px;
+        border-bottom: 1px solid;
+    }
 }

@@ -1,5 +1,14 @@
 .product-list-cart {
     padding: 0;
-    height: 450px;
+    height: auto;
+    max-height: 475px;
     overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .product-list-cart{
+        padding: 10px;
+        padding-top: 0;
+        height: 50vh;
+    }
 }

@@ -8,3 +8,35 @@
     position: sticky;
 }
 
+.desktop-header {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+    position: sticky;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.mobile-header {
+    display: none;
+    justify-content: space-between;
+    height: 70px;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
+    position: sticky;
+}
+
+@media (max-width: 768px) {
+    .desktop-header {
+        display: none;
+    }
+    .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+}

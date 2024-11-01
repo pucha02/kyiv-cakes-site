@@ -1,7 +1,7 @@
-export const ProductCost = ({cost}) => {
+export const ProductCost = ({ cost }) => {
     return (
-        <div>
-            {cost}$
+        <div style={{ fontSize: '17px' }}>
+            {cost} ₴
         </div>
     )
 }

@@ -1,7 +1,8 @@
 .input-with-label{
     margin-top: 20px;
+    padding-right: 12px;
 }
 
-.input-with-label label{
+.input-with-label p{
     font-size: 14px;
 }

@@ -1,0 +1,9 @@
+.cart-item-name-price{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.price-order-product{
+    width: 70px;
+}

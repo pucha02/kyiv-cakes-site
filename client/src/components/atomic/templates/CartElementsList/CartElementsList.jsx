@@ -12,8 +12,8 @@ export const CartElementsList = ({ onTotalChange }) => {
     const updateTotal = (cart) => {
         const total = cart.reduce((acc, item) => acc + item.cost * item.quantity, 0);
         setTotalPrice(total);
-        localStorage.setItem("totalPrice", JSON.stringify(total));  // Обновляем totalPrice в localStorage
-        onTotalChange(total); // Передаем обновленную итоговую сумму вверх
+        localStorage.setItem("totalPrice", JSON.stringify(total));
+        onTotalChange(total); 
     };
 
     const removeItem = (itemName) => {

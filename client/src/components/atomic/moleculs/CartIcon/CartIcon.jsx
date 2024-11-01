@@ -5,13 +5,15 @@ import './CartIcon.css'
 
 export const CartIcon = ({ onClick }) => {
     const [count, setCount] = useState(() => {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartData = localStorage.getItem("cart");
+        const cart = cartData ? JSON.parse(cartData) : [];
         return cart.reduce((total, item) => total + (item.quantity || 1), 0);
     });
 
     useEffect(() => {
         const updateCount = () => {
-            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartData = localStorage.getItem("cart");
+            const cart = cartData ? JSON.parse(cartData) : [];
             setCount(cart.reduce((total, item) => total + (item.quantity || 1), 0));
         };
 

@@ -1,7 +1,7 @@
 import './PriceCartProducts.css'
 
-export const PriceCartProducts = ({ price }) => {
+export const PriceCartProducts = ({ price, className }) => {
     return (
-        <div className='price-cart-product'>{price} грн</div>
+        <div className={className}>{price} ₴</div>
     )
 }

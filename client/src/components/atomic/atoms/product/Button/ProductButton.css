@@ -1,6 +1,8 @@
 .product-button {
     border-radius: 20px;
     background-color: black;
+    border: 1px solid;
+
     color: white;
     text-align: center;
     padding: 10px 15px 10px 15px;
@@ -9,9 +11,14 @@
     width: 100%;
 }
 
+.product-button:hover {
+    background-color: #919090;
+    transition: 300ms;
+}
+
 @media (max-width: 768px) {
-    .product-button{
-        height: 42px;
-        font-size: 15px;
+    .product-button {
+        height: 55px;
+        font-size: 20px;
     }
 }

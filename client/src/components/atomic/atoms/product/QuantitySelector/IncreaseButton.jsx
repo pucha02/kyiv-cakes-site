@@ -1,20 +1,24 @@
 import './QuantitySelector.css';
 
 export const IncreaseButton = ({ setCount, count, itemId, updateTotal }) => {
-  const handleIncrease = () => {
-    const updatedCount = count + 1;
-    setCount(updatedCount);
-
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const itemIndex = cart.findIndex((item) => item.id === itemId);
-
-    if (itemIndex !== -1) {
-      cart[itemIndex].quantity = updatedCount;
-      localStorage.setItem('cart', JSON.stringify(cart));
-
-      updateTotal(cart);
-    }
-  };
+    const handleIncrease = () => {
+        const updatedCount = count + 1;
+        setCount(updatedCount);
+    
+        // Retrieve and parse the cart from localStorage safely
+        const cartData = localStorage.getItem('cart');
+        const cart = cartData ? JSON.parse(cartData) : [];
+    
+        const itemIndex = cart.findIndex((item) => item.id === itemId);
+    
+        if (itemIndex !== -1) {
+            cart[itemIndex].quantity = updatedCount;
+            localStorage.setItem('cart', JSON.stringify(cart));
+    
+            // Update the total
+            updateTotal(cart);
+        }
+    };
 
   return (
     <div className='plus' onClick={handleIncrease}>

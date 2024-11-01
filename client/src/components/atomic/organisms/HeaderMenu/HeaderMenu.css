@@ -10,6 +10,12 @@
     width: 100%;
 }
 
+.category-list-elemenst{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .category-list-el {
     display: flex;
     align-items: center;
@@ -64,7 +70,7 @@
     .header-menu {
         justify-content: center;
         align-items: center;
-        width: 100%;
+        width: max-content;
     }
 
     .category-list {
@@ -89,5 +95,13 @@
     .category-list.open {
         display: flex;
         opacity: 1;
+    }
+
+    .category-list-elemenst{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 45vh;
+        font-size: 24px;
     }
 }

@@ -1,5 +1,7 @@
+import './NameCartProducts.css'
+
 export const NameCartProducts = ({ name }) => {
     return (
-        <div>{name}</div>
+        <div className="name-cart-products">{name}</div>
     )
 }

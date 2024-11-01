@@ -8,18 +8,18 @@ import { addToCart } from "../../../../services/cartService"; // Импорти�
 import ProdImg from '../../../../resources/productImage/tart.webp';
 import './ProductItem.css';
 
-export const ProductItem = ({ id, name, cost, updateTotal, openModal, openCart }) => {
+export const ProductItem = ({ id, name, cost, src, updateTotal, openModal, openCart }) => {
   const [count, setCount] = useState(1);
 
   const handleAddToCart = () => {
-    addToCart({ id, name, cost, quantity: count });
-    console.log(JSON.parse(localStorage.getItem('cart')));
+    addToCart({ id, name, cost, quantity: count, src });
+
     openCart()
   };
 
   return (
     <div className="product-card">
-      <ProductImage src={ProdImg} alt={name} onClick={() => openModal({ id, name, cost, image: ProdImg })} /> {/* Клик для открытия модального окна */}
+      <ProductImage src={src || ProdImg} alt={name} onClick={() => openModal({ id, name, cost, image: src || ProdImg })} /> {/* Клик для открытия модального окна */}
       <ProductName name={name} />
       <ProductCost cost={cost} />
       <ProductQuantitySelector count={count} setCount={setCount} updateTotal={updateTotal} />

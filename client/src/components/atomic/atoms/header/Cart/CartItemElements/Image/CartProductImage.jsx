@@ -2,8 +2,8 @@ import './CartProductImage.css'
 
 export const CartProductImage = ({src, alt}) => {
     return (
-        <div >
-            <img className="cart-product-image" src={src} alt={alt} />
+        <div className="cart-product-image">
+            <img  src={src} alt={alt} />
         </div>
     )
 }

@@ -1,0 +1,15 @@
+.product-list-order {
+    padding: 0;
+    height: auto;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .product-list-order{
+        padding: 10px;
+        padding-top: 0;
+        height: auto;
+        max-height: 50vh;
+    }
+}

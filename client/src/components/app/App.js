@@ -1,4 +1,5 @@
 import { MainPage } from "../atomic/pages/MainPage";
+import { AdminPage } from "../atomic/pages/AdminPage";
 import { CreateOrderPage } from "../atomic/pages/CreateOrderPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -12,6 +13,7 @@ function App() {
           <Routes>
               <Route path="/" element={<MainPage />}/>
               <Route path="/create-order" element={<CreateOrderPage />}/>
+              <Route path="/adminpage" element={<AdminPage />}/>
           </Routes>
         </Router>
         

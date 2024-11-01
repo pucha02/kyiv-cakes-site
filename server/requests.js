@@ -19,7 +19,6 @@ export const graphqlMutationAddingItem = {
         }
       `,
   variables: {
-    // Объявляем, но не инициализируем сразу
     documentId: "",
     itemId: "",
     qty: 0,
@@ -27,8 +26,8 @@ export const graphqlMutationAddingItem = {
 };
 export const graphqlMutationCreateDocument = {
   query: `
-    mutation MyMutation($statusId: String!, $type: String!, $contragentId: String!) {
-      createDocument(input: { statusId: $statusId, type: $type, contragentId: $contragentId }) {
+    mutation MyMutation($statusId: String!, $type: String!, $contragentId: String!, $resultAt: NaiveDateTime!) {
+      createDocument(input: { statusId: $statusId, type: $type, contragentId: $contragentId, resultAt: $resultAt }) {
         id
       }
     }
@@ -36,11 +35,11 @@ export const graphqlMutationCreateDocument = {
   variables: {
     statusId: "draft",
     type: "inbound_order",
-},
+  },
 };
 
 export const graphqlGetContact = {
-query: `
+  query: `
     query MyQuery($phoneEq: String!) {
       getContact(phoneEq: $phoneEq) {
         node{
@@ -51,13 +50,35 @@ query: `
       }
     }
   `,
-variables: {
-  phoneEq: "+380955072447", // Устанавливаем значение переменной перед отправкой запроса
-},
+  variables: {
+    phoneEq: "+380955072447", // Устанавливаем значение переменной перед отправкой запроса
+  },
 };
 
+export const graphqlGetProducts = {
+  query: `
+  query MyQuery {
+  listItems {
+    edges {
+      node {
+        id
+        name
+        category {
+          title
+        }
+        basePrice
+        coverImage {
+          publicUrl
+        }
+      }
+    }
+  }
+}
+  `
+}
+
 export const upsertContragent = {
-query: `
+  query: `
   mutation MyMutation($formalName: String!) {
     upsertContragent(input: { formalName: $formalName }) {
       id
@@ -65,19 +86,19 @@ query: `
     }
   }
 `,
-variables: {
+  variables: {
 
-}
+  }
 }
 export const createContact = {
-    query: `
+  query: `
      mutation MyMutation($ownerId: UUID!, $ownerSchema: OwnerSchema!, $firstName: String!, $phone: String!) {
         createContact(input: { ownerId: $ownerId, ownerSchema: $ownerSchema, firstName: $firstName, phone: $phone }) {
           ownerId
         }
       }
     `,
-    variables: {
-  
-    }
+  variables: {
+
   }
+}

@@ -1,4 +1,12 @@
 .product-image {
-    width: 100%;
+    width: 225px;
+    height: 225px;
     border-radius: 12px;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .product-image{
+        width: 100%;
+    }
 }

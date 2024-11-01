@@ -1,22 +1,25 @@
 import './QuantitySelector.css';
 
 export const DecreaseButton = ({ setCount, count, itemId, updateTotal }) => {
-  const handleDecrease = () => {
-    if (count > 1) {
-      const updatedCount = count - 1;
-      setCount(updatedCount);
-
-      const cart = JSON.parse(localStorage.getItem('cart')) || [];
-      const itemIndex = cart.findIndex((item) => item.id === itemId);
-
-      if (itemIndex !== -1) {
-        cart[itemIndex].quantity = updatedCount;
-        localStorage.setItem('cart', JSON.stringify(cart));
-
-        updateTotal(cart);
-      }
-    }
-  };
+    const handleDecrease = () => {
+        if (count > 1) {
+            const updatedCount = count - 1;
+            setCount(updatedCount);
+    
+            const cartData = localStorage.getItem('cart');
+            const cart = cartData ? JSON.parse(cartData) : [];
+    
+            const itemIndex = cart.findIndex((item) => item.id === itemId);
+    
+            if (itemIndex !== -1) {
+                cart[itemIndex].quantity = updatedCount;
+                localStorage.setItem('cart', JSON.stringify(cart));
+    
+                updateTotal(cart);
+            }
+        }
+    };
+    
 
   return (
     <div className={`minus ${count === 1 ? 'disabled' : ''}`} onClick={handleDecrease}>

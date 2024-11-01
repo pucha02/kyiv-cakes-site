@@ -12,3 +12,10 @@
 .cart-item-description{
     width: 70%;
 }
+
+@media (max-width: 768px) {
+    .cart-item-description{
+        margin-left: 20px;
+        font-size: 12px;
+    }
+}
