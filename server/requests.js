@@ -26,8 +26,8 @@ export const graphqlMutationAddingItem = {
 };
 export const graphqlMutationCreateDocument = {
   query: `
-    mutation MyMutation($statusId: String!, $type: String!, $contragentId: String!, $resultAt: NaiveDateTime!) {
-      createDocument(input: { statusId: $statusId, type: $type, contragentId: $contragentId, resultAt: $resultAt }) {
+    mutation MyMutation($statusId: String!, $type: String!, $contragentId: String!, $resultAt: NaiveDateTime!, $addressId: String!) {
+      createDocument(input: { statusId: $statusId, type: $type, contragentId: $contragentId, resultAt: $resultAt, addressId: $addressId }) {
         id
       }
     }
@@ -55,27 +55,32 @@ export const graphqlGetContact = {
   },
 };
 
-export const graphqlGetProducts = {
+export const graphqlGetProducts = (after) => ({
   query: `
-  query MyQuery {
-  listItems {
-    edges {
-      node {
-        id
-        name
-        category {
-          title
-        }
-        basePrice
-        coverImage {
-          publicUrl
+  query MyQuery($after: String) {
+    listItems(after: $after) {
+      edges {
+        node {
+          id
+          name
+          notes
+          category {
+            title
+          }
+          basePrice
+          coverImage {
+            publicUrl
+          }
         }
       }
+      pageInfo {
+        endCursor
+      }
     }
-  }
-}
-  `
-}
+  }`,
+  variables: { after }
+});
+
 
 export const upsertContragent = {
   query: `
@@ -92,8 +97,8 @@ export const upsertContragent = {
 }
 export const createContact = {
   query: `
-     mutation MyMutation($ownerId: UUID!, $ownerSchema: OwnerSchema!, $firstName: String!, $phone: String!) {
-        createContact(input: { ownerId: $ownerId, ownerSchema: $ownerSchema, firstName: $firstName, phone: $phone }) {
+     mutation MyMutation($ownerId: UUID!, $ownerSchema: OwnerSchema!, $firstName: String!, $lastName: String!, $email: String!, $phone: String!, $type: ContactType!) {
+        createContact(input: { ownerId: $ownerId, ownerSchema: $ownerSchema, firstName: $firstName, lastName: $lastName, email: $email, phone: $phone, type: $type }) {
           ownerId
         }
       }
@@ -102,3 +107,19 @@ export const createContact = {
 
   }
 }
+
+export const createAdress = {
+  query: `
+  mutation MyMutation($contragentId: String!, $city: String!, $streetLine1: String!){
+    createAddress(input: { contragentId: $contragentId, city: $city, streetLine1: $streetLine1}) {
+      id
+      city
+      streetLine1
+    }
+  }
+  `,
+  variables: {
+
+  }
+}
+

@@ -1,7 +1,7 @@
 export const CountDisplay = ({ count, setCount }) => {
   const handleBlur = () => {
     if (!count || count <= 0) {
-      setCount("1"); // Устанавливаем "1", если поле пустое
+      setCount(1); // Устанавливаем "1", если поле пустое
     }
   };
   return (

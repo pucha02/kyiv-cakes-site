@@ -3,7 +3,7 @@ import { NameCartProducts } from "../../atoms/header/Cart/CartItemElements/Name/
 import { PriceCartProducts } from "../../atoms/header/Cart/CartItemElements/Price/PriceCartProducts";
 import { CartProductImage } from "../../atoms/header/Cart/CartItemElements/Image/CartProductImage";
 import { QuantityCartProducts } from "../../atoms/header/Cart/CartItemElements/Quantity/QuantityCartProducts";
-import ProdImg from '../../../../resources/productImage/tart.webp';
+import ProdImg from '../../../../resources/productImage/tart.jpg';
  import './OrderrResultItem.css';
 
 export const OrderResultItem = ({ item }) => {

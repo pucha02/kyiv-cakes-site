@@ -11,16 +11,16 @@ const Header = ({ isOpen, setIsOpen }) => {
     };
 
     return (
-        < >
+        <>      
             <div className="desktop-header">
-                <HeaderLogo src={LogoImg} />
+                {/* <HeaderLogo src={LogoImg} /> */}
                 <HeaderMenu />
                 <CartIcon onClick={toggleCartModal} />
                 <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>
             <div className="mobile-header">
                 <HeaderMenu />
-                <HeaderLogo src={LogoImg} />
+                {/* <HeaderLogo src={LogoImg} /> */}
                 <CartIcon onClick={toggleCartModal} />
                 <CartModal isOpen={isOpen} setIsOpen={setIsOpen} />
             </div>

@@ -1,44 +1,86 @@
 import { MenuButton } from "../../atoms/header/MenuButton/MenuButton";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import './HeaderMenu.css';
 
 export const HeaderMenu = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [categories, setCategories] = useState([]); // State to store unique categories
+    const [categories, setCategories] = useState([]);
+    const [activeCategory, setActiveCategory] = useState(null);
 
-    // Fetch products and extract unique categories on component mount
     useEffect(() => {
         const fetchCategoriesFromProducts = async () => {
             try {
-                const response = await fetch('http://13.60.53.226/api/products'); // Adjust to your products endpoint
+                const response = await fetch('http://localhost:5000/api/products/getProducts');
                 const products = await response.json();
 
-                // Extract unique categories
+                // Собираем уникальные категории
                 const uniqueCategories = Array.from(new Set(products.map(product => product.category)));
-                console.log(uniqueCategories)
+
+                // Добавляем категорию "Новинки", если есть товары с type: "new"
+                const hasNewProducts = products.some(product => product.type === "new");
+                if (hasNewProducts) {
+                    uniqueCategories.unshift("Новинки"); // Добавляем "Новинки" в начало списка
+                }
+
                 setCategories(uniqueCategories);
             } catch (error) {
                 console.error("Failed to fetch products:", error);
             }
         };
-        
+
         fetchCategoriesFromProducts();
     }, []);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
-        console.log(isOpen)
     };
 
     const renderCategory = (data) => {
         return data.map((category, idx) => (
-            <div className="category-list-el" key={idx}>
-                <MenuButton title={category} src={`#${category}`} onClick={()=>setIsOpen(false)}/>
+            <div
+                className={`category-list-el ${activeCategory === category ? 'active' : ''}`}
+                key={idx}
+            >
+                <MenuButton
+                    title={category}
+                    src={`#${category}`}
+                    onClick={() => {
+                        setIsOpen(false);
+                        setActiveCategory(category);
+                    }}
+                />
             </div>
         ));
     };
 
-    const elements = useMemo(() => renderCategory(categories), [categories]);
+    // Обновление activeCategory при прокрутке
+    useEffect(() => {
+        const handleScroll = () => {
+            let closestCategory = null;
+            let closestOffset = Number.MAX_VALUE;
+
+            categories.forEach((category) => {
+                const element = document.getElementById(category);
+                if (element) {
+                    const elementOffset = Math.abs(element.getBoundingClientRect().top);
+                    if (elementOffset < closestOffset) {
+                        closestOffset = elementOffset;
+                        closestCategory = category;
+                    }
+                }
+            });
+
+            if (closestCategory !== activeCategory) {
+                setActiveCategory(closestCategory);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [categories, activeCategory]);
 
     return (
         <div className="header-menu">
@@ -46,53 +88,8 @@ export const HeaderMenu = () => {
                 ☰
             </div>
             <div className={`category-list ${isOpen ? 'open' : ''}`}>
-                <div className="category-list-elemenst">{elements}</div>
+                <div className="category-list-elemenst">{renderCategory(categories)}</div>
             </div>
         </div>
     );
 };
-
-
-// import { MenuButton } from "../../atoms/header/MenuButton/MenuButton";
-// import { useMemo, useState } from "react";
-// import './HeaderMenu.css';
-
-// export const HeaderMenu = () => {
-//     const [isOpen, setIsOpen] = useState(false);
-
-//     const categories = [
-//         "Порційні десерти",
-//         "Твої Веган Десерти",
-//         "Твої кекси",
-//         "Твої сиропи",
-//         "Твої Тортики",
-//         "Кіш лорен"
-//     ];
-
-//     const toggleMenu = () => {
-//         setIsOpen(!isOpen);
-//         console.log(isOpen)
-//     };
-    
-
-//     const renderCategory = (data) => {
-//         return data.map((category, idx) => (
-//             <div className="category-list-el" key={idx}>
-//                 <MenuButton title={category} src={`#${category}`} onClick={toggleMenu}/>
-//             </div>
-//         ));
-//     };
-
-//     const elements = useMemo(() => renderCategory(categories), [categories]);
-
-//     return (
-//         <div className="header-menu">
-//             <div className="burger-icon" onClick={toggleMenu}>
-//                 ☰
-//             </div>
-//             <div className={`category-list ${isOpen ? 'open' : ''}`}>
-//                 <div className="category-list-elemenst">{elements}</div>
-//             </div>
-//         </div>
-//     );
-// };

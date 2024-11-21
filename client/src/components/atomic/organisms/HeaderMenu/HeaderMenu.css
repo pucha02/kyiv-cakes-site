@@ -1,7 +1,7 @@
 .header-menu {
     display: flex;
     justify-content: space-between;
-    width: 70%;
+    width: 90%;
 }
 
 .category-list {
@@ -24,6 +24,9 @@
 }
 
 .category-list-el:hover {
+    border-bottom: 2px solid black;
+}
+.category-list-el.active {
     border-bottom: 2px solid black;
 }
 

@@ -5,7 +5,7 @@ import { QuantityCartProducts } from "../../atoms/header/Cart/CartItemElements/Q
 import { PriceCartProducts } from "../../atoms/header/Cart/CartItemElements/Price/PriceCartProducts";
 import { ProductQuantitySelector } from "../../moleculs/QuantitySelector/QuantitySelector";
 import { CartProductImage } from "../../atoms/header/Cart/CartItemElements/Image/CartProductImage";
-import ProdImg from '../../../../resources/productImage/tart.webp';
+import ProdImg from '../../../../resources/productImage/tart.jpg';
 import './CartItem.css';
 
 export const CartItem = ({ item, onItemRemove, updateTotal }) => {

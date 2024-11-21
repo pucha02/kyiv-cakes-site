@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { InputWithLabelOrder } from "../../moleculs/InputWithLabelOrder/InputWithLabelOrder";
 import { SubmitFormButton } from "../../atoms/orderForm/submitButton/SubmitFormButton";
+import useGetDataUser from "../../../../services/FetchUserData";
+import { useEffect } from "react";
 import './OrderForm.css';
 
 export const OrderForm = () => {
+    const { getAllUserData } = useGetDataUser();
     const [formData, setFormData] = useState({
         email: '',
         phone: '',
@@ -21,6 +24,29 @@ export const OrderForm = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const result = await getAllUserData();
+                console.log(result.user.firstname);
+                if (result) {
+                    setFormData((prevDetails) => ({
+                        ...prevDetails,
+                        phone: result.user.number_phone || '',
+                        firstName: result.user.firstname || '',
+                        lastName: result.user.lastname || '',
+                        establishment: result.user.companyname || '',
+                    }));
+                }
+                // Обновляем только поле email
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
     // Перевірка номера телефону
     const validatePhone = (phone) => /^\+380\d{9}$/.test(phone);
 
@@ -57,7 +83,7 @@ export const OrderForm = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://13.60.53.226/api/mongo-orders', {
+            const response = await fetch('http://localhost:5000/api/mongo-orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -81,7 +107,7 @@ export const OrderForm = () => {
 
     const closeModal = () => {
         setIsModalOpen(false);
-        window.location.href = '/';
+        window.location.href = '/kyivcakes';
     };
 
     return (
@@ -110,6 +136,7 @@ export const OrderForm = () => {
                             handleInputChange({ target: { name: 'phone', value: '+380' } });
                         }
                     }}
+                    disabled={true}
                 />
                 {errors.phone && <p className="error-text">{errors.phone}</p>}
 
@@ -120,6 +147,7 @@ export const OrderForm = () => {
                     placeholder={'Введіть назву закладу'}
                     value={formData.establishment}
                     onChange={handleInputChange}
+                    disabled={true} 
                 />
 
                 <InputWithLabelOrder

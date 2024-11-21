@@ -13,7 +13,6 @@ const ProductModal = ({ product, onClose, updateTotal, openCart }) => {
 
     const handleAddToCart = () => {
         addToCart({ id: product.id, name: product.name, cost: product.cost, quantity: count, image: product.image });
-        console.log(JSON.parse(localStorage.getItem('cart')));
         openCart()
     };
     console.log(product)
@@ -28,6 +27,7 @@ const ProductModal = ({ product, onClose, updateTotal, openCart }) => {
                     <div className='modal-content-product-content-fields'>
                         <ProductName name={product.name} />
                     </div>
+                    <div>{product.description || ''}</div>
                     <div className='modal-content-product-content-btns'>
                         <div className='modal-content-product-content-cost'><span>Ціна:</span> <ProductCost cost={product.cost} /></div>
                         <ProductQuantitySelector count={count} setCount={setCount} updateTotal={updateTotal} />

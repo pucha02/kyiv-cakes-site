@@ -1,19 +1,38 @@
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const PORT = 5001;
+import mongoose from 'mongoose';
+import Marquee from './models/Marquee.js';  // Путь к модели Marquee
 
-app.use(cors());
-app.use(express.json());
+// Настройки подключения к MongoDB
+const dbURI = 'mongodb+srv://kyivcakes1:yfmCfjFhGuNhwRJ9@cluster0.09vxu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';  // Замените на имя вашей базы данных
 
-app.post('/api/mongo-orders', (req, res) => {
-    const orderData = req.body;
-    console.log("Received order data:", orderData);
-    // Process orderData (e.g., save to database)
+// Функция для создания записи в коллекции
+const createMarqueeContent = async () => {
+  try {
+    // Подключаемся к базе данных
+    await mongoose.connect(dbURI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
-    res.status(200).json({ message: "Order received successfully" });
-});
+    // Проверяем, существует ли уже контент
+    const existingContent = await Marquee.findOne();
+    if (existingContent) {
+      console.log('Контент уже существует в базе данных');
+      return;
+    }
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+    // Вставляем начальный контент в базу данных
+    const content = 'Welcome to our site! Check out the new arrivals and promotions!';
+    const newMarquee = new Marquee({ content });
+
+    await newMarquee.save();  // Сохраняем новый документ
+    console.log('Контент для бегущей строки успешно добавлен');
+
+  } catch (error) {
+    console.error('Ошибка при создании контента:', error);
+  } finally {
+    mongoose.disconnect();  // Закрываем подключение к базе данных
+  }
+};
+
+// Выполнение скрипта
+createMarqueeContent();
