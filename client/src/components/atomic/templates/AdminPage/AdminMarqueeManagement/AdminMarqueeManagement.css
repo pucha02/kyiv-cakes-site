@@ -1,0 +1,71 @@
+.admin-marquee-management {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Форма обновления контента */
+.marquee-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.marquee-label {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+.marquee-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.marquee-input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+/* Кнопка отправки */
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+.submit-btn:active {
+    background-color: #1e7e34;
+}
+
+/* Адаптивность */
+@media (max-width: 600px) {
+    .admin-marquee-management {
+        padding: 15px;
+    }
+
+    .marquee-form {
+        padding: 15px;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}

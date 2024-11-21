@@ -1,4 +1,7 @@
-export const LoginFormPasswordInputAtom = ({handleChange, userData}) => {
+import './styleLoginForm.css'
+
+
+export const LoginFormPasswordInputAtom = ({ handleChange, userData }) => {
     return (
         <input
             type="password"
@@ -6,6 +9,7 @@ export const LoginFormPasswordInputAtom = ({handleChange, userData}) => {
             placeholder="Пароль"
             value={userData.password}
             onChange={handleChange}
+            className="login-input login-password"
         />
-    )
-}
+    );
+};

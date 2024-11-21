@@ -70,9 +70,9 @@ export const OrderForm = () => {
         if (!validatePhone(formData.phone)) {
             newErrors.phone = "Номер повинен починатися з +380 і містити 12 цифр";
         }
-        if (!validateEmail(formData.email)) {
-            newErrors.email = "Неправильний формат електронної пошти";
-        }
+        // if (!validateEmail(formData.email)) {
+        //     newErrors.email = "Неправильний формат електронної пошти";
+        // }
 
         // Якщо є помилки, встановлюємо їх і перериваємо відправлення
         if (Object.keys(newErrors).length > 0) {
@@ -83,7 +83,7 @@ export const OrderForm = () => {
         setIsLoading(true);
 
         try {
-            const response = await fetch('http://localhost:5000/api/mongo-orders', {
+            const response = await fetch('http://13.60.53.226/api/mongo-orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -114,7 +114,7 @@ export const OrderForm = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <h2>Дані клієнта</h2>
-                <InputWithLabelOrder
+                {/* <InputWithLabelOrder
                     label={'Ел. адреса *'}
                     type={'email'}
                     name={"email"}
@@ -122,7 +122,7 @@ export const OrderForm = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                 />
-                {errors.email && <p className="error-text">{errors.email}</p>}
+                {errors.email && <p className="error-text">{errors.email}</p>} */}
 
                 <InputWithLabelOrder
                     label={'Телефон *'}
@@ -170,7 +170,7 @@ export const OrderForm = () => {
 
                 <InputWithLabelOrder
                     label={'Дата доставки *'}
-                    type={'datetime-local'}
+                    type={'date'}
                     name={"deliveryDate"}
                     placeholder={'Оберіть дату доставки'}
                     value={formData.deliveryDate}

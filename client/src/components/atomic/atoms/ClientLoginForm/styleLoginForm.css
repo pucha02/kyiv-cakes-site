@@ -1,0 +1,39 @@
+/* Общие стили для input */
+.login-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Стили для поля телефона */
+.login-phone {
+    margin-top: 20px;
+}
+
+/* Стили для поля пароля */
+.login-password {
+    margin-bottom: 20px;
+}
+
+/* Стили для кнопки входа */
+.login-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: #fab9b9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.login-button:hover {
+    background: #f0a9a9;
+}

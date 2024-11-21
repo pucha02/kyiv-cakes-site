@@ -35,7 +35,7 @@ export const loginUser = async (req, res) => {
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) return res.status(400).json({ message: 'Неправильний пароль' });
 
-        const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '7d' });
         res.json({ token, id: user._id });
     } catch (error) {
         res.status(500).json({ message: 'Помилка при вході' });

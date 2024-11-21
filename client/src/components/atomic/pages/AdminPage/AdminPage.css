@@ -1,0 +1,78 @@
+/* .admin-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+} */
+.admin-page {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f5f7;
+  }
+  
+.update-button {
+    font-size: 24px;
+    padding: 15px 30px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.update-button:hover {
+    background-color: #45a049;
+}
+
+.message {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.banner{
+    width: 100%;
+}
+.sidebar-menu {
+    width: 250px;
+    background-color: #2f3542;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar-menu h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #ff6b6b;
+  }
+  
+  .sidebar-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-menu li {
+    margin: 15px 0;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+  }
+  
+  .sidebar-menu li:hover {
+    background-color: #57606f;
+  }
+  .content-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  

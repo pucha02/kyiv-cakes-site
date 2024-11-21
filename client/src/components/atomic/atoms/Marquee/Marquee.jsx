@@ -7,7 +7,7 @@ const Marquee = () => {
   useEffect(() => {
     const fetchMarqueeContent = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/marquee/getContent');
+        const response = await fetch('http://13.60.53.226/api/marquee/getContent');
         const data = await response.json();
         setContent(data.content);
       } catch (error) {

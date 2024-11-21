@@ -22,4 +22,44 @@ router.put('/updateType/:id', async (req, res) => {
     }
 });
 
+router.post('/update-category-order', async (req, res) => {
+    const { currentCategory, targetCategory, currentOrder, targetOrder } = req.body;
+
+    // Лог входящих данных
+    console.log('Request body:', req.body);
+
+    try {
+        // Проверка наличия всех необходимых данных
+        if (!currentCategory || !targetCategory || currentOrder === undefined || targetOrder === undefined) {
+            console.error('Missing required fields:', { currentCategory, targetCategory, currentOrder, targetOrder });
+            return res.status(400).send({ message: 'Missing required fields' });
+        }
+
+        // Лог перед первым обновлением
+        console.log(`Updating category "${currentCategory}" to order ${targetOrder}`);
+        const currentUpdateResult = await Product.updateMany(
+            { category: currentCategory },
+            { $set: { categoryOrder: targetOrder } }
+        );
+        console.log(`Updated category "${currentCategory}" result:`, currentUpdateResult);
+
+        // Лог перед вторым обновлением
+        console.log(`Updating category "${targetCategory}" to order ${currentOrder}`);
+        const targetUpdateResult = await Product.updateMany(
+            { category: targetCategory },
+            { $set: { categoryOrder: currentOrder } }
+        );
+        console.log(`Updated category "${targetCategory}" result:`, targetUpdateResult);
+
+        // Успешный результат
+        res.status(200).send({ message: 'Category order updated successfully' });
+    } catch (error) {
+        // Лог ошибок
+        console.error('Error updating category order:', error);
+        res.status(500).send({ message: 'Error updating category order', error });
+    }
+});
+
+
+
 export default router;

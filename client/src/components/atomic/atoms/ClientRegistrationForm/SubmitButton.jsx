@@ -1,5 +1,5 @@
 export const RegistrationFormSubmitButtonAtom = () => {
     return (
-        <button type="submit">Зареєструватися</button>
+        <button  className="edit-btn" type="submit">Зареєструвати</button>
     )
 }

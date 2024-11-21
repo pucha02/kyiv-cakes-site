@@ -8,6 +8,7 @@ import authRoutes from './routes/authRoutes.js';
 import minPriceRoutes from './routes/minPriceRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import marqueeRoutes from './routes/marqueeRoutes.js'
+import deliveryPriceRoutes from './routes/deliveryPriceRoutes.js'
 
 import Product from './models/Product.js';
 // Импорт необходимых модулей
@@ -63,6 +64,7 @@ app.post('/api/mongo-orders', async (req, res) => {
             sku: item.id,
             deliveryDate: `${item.deliveryDate}:00`
         }));
+        console.log(items)
         graphqlGetContact.variables.phoneEq = req.body.phone;
         upsertContragent.variables.formalName = req.body.establishment;
         let contragentId;
@@ -79,7 +81,8 @@ app.post('/api/mongo-orders', async (req, res) => {
                     
                     contragentId = ownerId;
                     graphqlMutationCreateDocument.variables.contragentId = ownerId;
-                    graphqlMutationCreateDocument.variables.resultAt = `${req.body.deliveryDate}:00`;
+                    graphqlMutationCreateDocument.variables.resultAt = `${req.body.deliveryDate}T00:00:00`;
+                    console.log(graphqlMutationCreateDocument.variables.resultAt)
                     createAdress.variables = {
                         contragentId: ownerId,
                         city: req.body.city,
@@ -214,12 +217,19 @@ app.post('/api/getProductsFromCrm', async (req, res) => {
         // Получить существующие продукты из базы данных
         const existingProducts = await Product.find({});
         const existingProductMap = new Map(
-            existingProducts.map((product) => [product.id, product.type])
+            existingProducts.map((product) => [product.id, product])
         );
-
+        
         let hasNextPage = true;
         let after = null;
         const newProducts = []; // Массив для временного хранения новых продуктов
+        const categoryOrderMap = {}; // Объект для хранения номера категории
+
+        // Сохраняем старые значения categoryOrder
+        const oldCategoryOrders = new Map();
+        existingProducts.forEach(product => {
+            oldCategoryOrders.set(product.category, product.categoryOrder);
+        });
 
         while (hasNextPage) {
             const response = await fetch("https://api.keruj.com/api/graphql", {
@@ -233,16 +243,27 @@ app.post('/api/getProductsFromCrm', async (req, res) => {
 
             // Обрабатываем новые продукты
             products.forEach((el) => {
-                const existingType = existingProductMap.get(el.node.id) || null;
+                const existingProduct = existingProductMap.get(el.node.id);
+                const existingType = existingProduct ? existingProduct.type : null;
+                const category = el.node.category ? el.node.category.title : null;
+
+                // Присваиваем уникальный номер категории, если это новая категория
+                if (category && !categoryOrderMap[category]) {
+                    categoryOrderMap[category] = Object.keys(categoryOrderMap).length + 1;
+                }
+
+                // Присваиваем старое значение categoryOrder, если оно существует
+                const categoryOrder = oldCategoryOrders.get(category) || categoryOrderMap[category];
 
                 newProducts.push({
                     id: el.node.id,
                     name: el.node.name,
                     description: el.node.notes,
                     basePrice: el.node.basePrice,
-                    category: el.node.category ? el.node.category.title : null,
+                    category: category,
                     coverImage: el.node.coverImage ? el.node.coverImage.publicUrl : null,
                     type: existingType, // Сохраняем старое значение type, если оно было
+                    categoryOrder: categoryOrder // Присваиваем значение categoryOrder
                 });
             });
 
@@ -251,7 +272,8 @@ app.post('/api/getProductsFromCrm', async (req, res) => {
             hasNextPage = !!after;
         }
 
-        // Удаляем старые продукты
+        // Прежде чем удалять старые продукты, присваиваем им старое значение categoryOrder
+        console.log('Deleting old products with categoryOrder assignment...');
         await Product.deleteMany({});
         console.log('Old products deleted.');
 
@@ -269,12 +291,12 @@ app.post('/api/getProductsFromCrm', async (req, res) => {
     }
 });
 
-
 app.use('/api/products', productRoutes)
 app.use('/api/auth', authRoutes);
 app.use('/api/minPrice', minPriceRoutes)
 app.use('/api/marquee', marqueeRoutes)
+app.use('/api/deliveryPrice', deliveryPriceRoutes)
 
 app.listen(5000, () => {
-    console.log('Сервер запущен на http://localhost:5000');
+    console.log('Сервер запущен на http://13.60.53.226');
 });

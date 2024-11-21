@@ -10,7 +10,7 @@ export const HeaderMenu = () => {
     useEffect(() => {
         const fetchCategoriesFromProducts = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/products/getProducts');
+                const response = await fetch('http://13.60.53.226/api/products/getProducts');
                 const products = await response.json();
 
                 // Собираем уникальные категории

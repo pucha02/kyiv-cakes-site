@@ -1,0 +1,95 @@
+/* Общий контейнер */
+.admin-category-management {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Категория */
+.admin-category {
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.admin-category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.admin-category-title {
+    font-size: 18px;
+    color: #333;
+    margin: 0;
+}
+
+.admin-category-controls button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+    transition: background-color 0.3s;
+}
+
+.admin-category-controls button:hover {
+    background-color: #0056b3;
+}
+
+/* Список продуктов */
+.admin-product-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.admin-product-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-product-item:last-child {
+    border-bottom: none;
+}
+
+.admin-product-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.admin-product-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.admin-checkbox-container {
+    margin-left: 20px;
+}
+
+.admin-checkbox-container label {
+    font-size: 14px;
+    color: #555;
+}
+
+.admin-message {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e7f5e9;
+    color: #2c662d;
+    border: 1px solid #d4ecd8;
+    border-radius: 5px;
+}

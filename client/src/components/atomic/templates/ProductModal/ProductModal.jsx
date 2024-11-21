@@ -20,22 +20,25 @@ const ProductModal = ({ product, onClose, updateTotal, openCart }) => {
     return (
         <div className="modal-overlay-product" onClick={onClose}>
             <div className="modal-content-product" onClick={(e) => e.stopPropagation()}>
-                <div className='modal-content-product-img'>
-                    <ProductImage src={product.image} alt={product.name}/>
-                </div>
-                <div className='modal-content-product-content'>
-                    <div className='modal-content-product-content-fields'>
-                        <ProductName name={product.name} />
+                <div className='modal-content-body'>
+                    <div className='modal-content-product-img'>
+                        <ProductImage src={product.image} alt={product.name} />
                     </div>
-                    <div>{product.description || ''}</div>
-                    <div className='modal-content-product-content-btns'>
-                        <div className='modal-content-product-content-cost'><span>Ціна:</span> <ProductCost cost={product.cost} /></div>
-                        <ProductQuantitySelector count={count} setCount={setCount} updateTotal={updateTotal} />
-                        <ProductButton method={handleAddToCart} />
+                    <div className='modal-content-product-content'>
+                        <div className='modal-content-product-content-fields'>
+                            <ProductName name={product.name} />
+                        </div>
+                        <div className="modal-content-product-content-description">{product.description || ''}</div>
+                        <div className='modal-content-product-content-btns'>
+                            <div className='modal-content-product-content-cost'><span>Ціна:</span> <ProductCost cost={product.cost} /></div>
+                            <ProductQuantitySelector count={count} setCount={setCount} updateTotal={updateTotal} />
+                            <ProductButton method={handleAddToCart} />
 
+                        </div>
                     </div>
+                    
                 </div>
-                <button className='close-button' onClick={onClose}>&times;</button>
+                <button className='close-modal-product' onClick={onClose}>&times;</button>
             </div>
         </div>
     );

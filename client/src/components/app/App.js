@@ -1,5 +1,5 @@
 import { MainPage } from "../atomic/pages/MainPage";
-import { AdminPage } from "../atomic/pages/AdminPage";
+import { AdminPage } from "../atomic/pages/AdminPage/AdminPage";
 import ClientLoginForm from "../atomic/organisms/ClientLoginForm/ClientLoginForm";
 import { CreateOrderPage } from "../atomic/pages/CreateOrderPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";

@@ -3,7 +3,6 @@ import { PhoneRegistrationMolecule } from "../../moleculs/ClientRegistrationForm
 import { FirstNameRegistrationMolecule } from "../../moleculs/ClientRegistrationForm/FirstNameMolecule";
 import { LastNameRegistrationMolecule } from "../../moleculs/ClientRegistrationForm/LastNameMolecule";
 import { PasswordRegistrationMolecule } from "../../moleculs/ClientRegistrationForm/PasswordMolecule";
-import { EmailRegistrationMolecule } from "../../moleculs/ClientRegistrationForm/EmailMolecule";
 import { CompanyNameRegistrationMolecule } from "../../moleculs/ClientRegistrationForm/CompanyNameMolecule";
 import { RegistrationFormSubmitButtonAtom } from "../../atoms/ClientRegistrationForm/SubmitButton";
 import { validateFields } from "../../../../utils/ValidateForm";
@@ -11,7 +10,7 @@ import { handleChangeInput } from "../../../../utils/handleChangeInput";
 
 const ClientRegistrationForm = () => {
     const [userData, setUserData] = useState({
-        number_phone: '',
+        number_phone: '+380',
         firstname: '',
         lastname: '',
         password: '',
@@ -31,7 +30,7 @@ const ClientRegistrationForm = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/auth/register-user', {
+            const response = await fetch('http://13.60.53.226/api/auth/register-user', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -54,9 +53,22 @@ const ClientRegistrationForm = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmitRegistrationUser}>
-                <CompanyNameRegistrationMolecule userData={userData} handleChange={(e) => handleChangeInput(e, setUserData, userData)} validationErrors={validationErrors}/>
-                <PhoneRegistrationMolecule userData={userData} handleChange={(e) => handleChangeInput(e, setUserData, userData)} validationErrors={validationErrors} />
+            <form className="edit-user-form" onSubmit={handleSubmitRegistrationUser}>
+                <CompanyNameRegistrationMolecule userData={userData} handleChange={(e) => handleChangeInput(e, setUserData, userData)} validationErrors={validationErrors} />
+                <PhoneRegistrationMolecule
+                    userData={userData}
+                    handleChange={(e) => handleChangeInput(e, setUserData, userData)}
+                    validationErrors={validationErrors}
+                    onFocus={(e) => {
+                        if (!userData.number_phone) { // Проверяем, что поле еще не заполнено
+                            setUserData((prevData) => ({
+                                ...prevData,
+                                number_phone: '+380',
+                            }));
+                        }
+                    }}
+                />
+
                 <FirstNameRegistrationMolecule userData={userData} handleChange={(e) => handleChangeInput(e, setUserData, userData)} validationErrors={validationErrors} />
                 <LastNameRegistrationMolecule userData={userData} handleChange={(e) => handleChangeInput(e, setUserData, userData)} validationErrors={validationErrors} />
                 <PasswordRegistrationMolecule userData={userData} handleChange={(e) => handleChangeInput(e, setUserData, userData)} validationErrors={validationErrors} />

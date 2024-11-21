@@ -13,7 +13,7 @@ const ProductList = ({ isOpen, setIsOpen }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products/getProducts'); // Fetch from your API
+        const response = await fetch('http://13.60.53.226/api/products/getProducts'); // Fetch from your API
         const data = await response.json();
         console.log(data);
         setProductList(data); // Set the fetched data

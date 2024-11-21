@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Marquee from './models/Marquee.js';  // Путь к модели Marquee
+import DeliveryPrice from './models/DeliveryPrice.js';
 
 // Настройки подключения к MongoDB
 const dbURI = 'mongodb+srv://kyivcakes1:yfmCfjFhGuNhwRJ9@cluster0.09vxu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';  // Замените на имя вашей базы данных
@@ -14,15 +14,15 @@ const createMarqueeContent = async () => {
     });
 
     // Проверяем, существует ли уже контент
-    const existingContent = await Marquee.findOne();
+    const existingContent = await DeliveryPrice.findOne();
     if (existingContent) {
       console.log('Контент уже существует в базе данных');
       return;
     }
 
     // Вставляем начальный контент в базу данных
-    const content = 'Welcome to our site! Check out the new arrivals and promotions!';
-    const newMarquee = new Marquee({ content });
+    const content = 150
+    const newMarquee = new DeliveryPrice({ content });
 
     await newMarquee.save();  // Сохраняем новый документ
     console.log('Контент для бегущей строки успешно добавлен');

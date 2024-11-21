@@ -1,0 +1,73 @@
+/* Общий контейнер */
+.min-price-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Метка */
+.min-price-container label {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Поле ввода */
+.min-price-container input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.min-price-container input:focus {
+    border-color: #007bff;
+}
+
+/* Кнопка */
+.min-price-container button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.min-price-container button:hover {
+    background-color: #0056b3;
+}
+
+.min-price-container button:active {
+    transform: scale(0.98);
+}
+
+/* Сообщение */
+.min-price-container .message {
+    font-size: 14px;
+    color: #2c662d;
+    background-color: #e7f5e9;
+    border: 1px solid #d4ecd8;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.min-price-container .message.error {
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+}
